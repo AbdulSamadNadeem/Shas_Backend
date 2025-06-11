@@ -10,6 +10,7 @@ mongoose.connect(process.env.CONN_STR, {
       console.log("DB CONNECTED SUCCESSFULLY");
     })
     .catch((err) => {
+           console.log(err)
       console.log("DB CONNECTION ERROR:", err.message);
     });
 ;
