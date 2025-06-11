@@ -1,11 +1,25 @@
-const app = require('./app')
-const PORT  = process.env.PORT || 8000
+const app = require("./app");
+const connectDB = require("./Database/Db");
+const PORT = process.env.PORT || 8000;
 
-const connectDB = require("./Database/Db")
-connectDB().then(() => {
-  const PORT = process.env.PORT || 3000;
-  app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-  });
-});
+const startServer = async () => {
+  try {
 
+    await connectDB();
+    console.log("✅ MongoDB connected");
+
+    app.listen(PORT, () => {
+      console.log(`🚀 Server running on port ${PORT}`);
+      console.log(`➡️ Try http://localhost:${PORT}/api/health`);
+    });
+
+  } catch (error) {
+    console.error("❌ Failed to start server:", error.message);
+    process.exit(1); 
+  }
+};
+
+startServer();
+
+
+module.exports = app;
