@@ -22,6 +22,7 @@ exports.storemessages = async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).send("Error storing message.",err);
+    res.status(500).send(err);
   }
 };
 
@@ -45,6 +46,7 @@ exports.sendemail = async (req, res) => {
     res.status(200).send("Email sent successfully.");
   } catch (err) {
     console.error(err);
+     res.status(500).send(err);
     res.status(500).send("Error sending email.");
   }
 };
