@@ -21,7 +21,7 @@ exports.storemessages = async (req, res) => {
     res.status(201).send("Message stored successfully.");
   } catch (err) {
     console.error(err);
-    res.status(500).send("Error storing message.");
+    res.status(500).send("Error storing message.",err);
   }
 };
 
